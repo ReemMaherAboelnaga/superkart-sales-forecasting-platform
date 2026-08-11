@@ -4,11 +4,11 @@ import pandas as pd
 import requests
 
 # Backend Flask API URL
-BACKEND_URL = "http://backend:7860"
+BACKEND_URL = "http://superkart-api:7860"
 
 # App Title
 st.title("🛒 SuperKart ForecastHub")
-st.write("Sales Revenue Forecasting using the Tuned XGBoost Model")
+st.write("Sales Revenue Forecasting Platform")
 
 # =====================================================
 # Online Prediction
@@ -76,7 +76,8 @@ store_establishment_year = st.number_input(
     step=1
 )
 
-store_age = 2026 - store_establishment_year
+CURRENT_YEAR = 2026
+store_age = CURRENT_YEAR - store_establishment_year
 
 input_data = pd.DataFrame([{
     "Product_Weight": product_weight,
