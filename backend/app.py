@@ -7,7 +7,8 @@ from flask import Flask, request, jsonify
 superkart_api = Flask("SuperKart ForecastHub")
 
 # Load serialized model
-model = joblib.load("SuperKart__model_v1_0.joblib")
+MODEL_PATH = "SuperKart__model_v1_0.joblib"
+model = joblib.load(MODEL_PATH)
 
 # Home endpoint
 @superkart_api.get("/")
@@ -94,6 +95,6 @@ if __name__ == "__main__":
 
     superkart_api.run(
         host="0.0.0.0",
-        port=5000,
+        port=7860,
         debug=True
     )
