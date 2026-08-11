@@ -9,6 +9,7 @@ WORKDIR /app
 COPY . .
 
 # Install Python dependencies listed in requirements.txt
+RUN pip install --no-cache-dir --upgrade pip
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Expose the Streamlit application port
