@@ -67,6 +67,27 @@ def predict_sales_batch():
 
         input_data = pd.read_csv(file)
 
+        # Validate required columns
+        required_columns = [
+            "Product_Weight",
+            "Product_Sugar_Content",
+            "Product_Allocated_Area",
+            "Product_Type",
+            "Product_MRP",
+            "Store_Id",
+            "Store_Size",
+            "Store_Location_City_Type",
+            "Store_Type",
+            "Store_Age"
+        ]
+
+        missing_cols = set(required_columns) - set(input_data.columns)
+
+        if missing_cols:
+            return jsonify({
+                "Error": f"Missing columns: {sorted(list(missing_cols))}"
+            })
+
         predictions = [
             round(float(x), 2)
             for x in model.predict(input_data)
@@ -86,7 +107,7 @@ def predict_sales_batch():
         return jsonify({
             "Error": str(e)
         })
-
+        
 # --------------------------------------------------
 # Run API
 # --------------------------------------------------
